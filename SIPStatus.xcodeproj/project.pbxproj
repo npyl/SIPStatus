@@ -10,6 +10,7 @@
 		094A5D85215BBA63008B82EF /* SIPStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094A5D7B215BBA63008B82EF /* SIPStatus.framework */; };
 		094A5D8A215BBA63008B82EF /* SIPStatusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 094A5D89215BBA63008B82EF /* SIPStatusTests.m */; };
 		094A5D8C215BBA63008B82EF /* SIPStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 094A5D7E215BBA63008B82EF /* SIPStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		094A5D96215BBAAE008B82EF /* SIPStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 094A5D95215BBAAE008B82EF /* SIPStatus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		094A5D84215BBA63008B82EF /* SIPStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SIPStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		094A5D89215BBA63008B82EF /* SIPStatusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIPStatusTests.m; sourceTree = "<group>"; };
 		094A5D8B215BBA63008B82EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		094A5D95215BBAAE008B82EF /* SIPStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIPStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				094A5D7E215BBA63008B82EF /* SIPStatus.h */,
+				094A5D95215BBAAE008B82EF /* SIPStatus.m */,
 				094A5D7F215BBA63008B82EF /* Info.plist */,
 			);
 			path = SIPStatus;
@@ -193,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094A5D96215BBAAE008B82EF /* SIPStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
