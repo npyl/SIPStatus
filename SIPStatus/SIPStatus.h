@@ -63,6 +63,7 @@ enum {
 
 /* Methods */
 - (BOOL)isEnabled;
+- (BOOL)isAppleInternal;
 
 - (BOOL)protectsFS;
 - (BOOL)allowsTFP;  /* task-for-pid */
@@ -71,8 +72,9 @@ enum {
 - (BOOL)allowsNVRAM;
 - (BOOL)allowsDevConf;  /* device configuration */
 - (BOOL)allowsAnyRecovery;
-- (BOOL)allowsKexts;
+- (BOOL)allowsUnsignedKexts;
+- (BOOL)allowsUnapprovedKexts;
 
-- (BOOL)isAppleInternal;
+- (NSDictionary *)getReport;
 
 @end

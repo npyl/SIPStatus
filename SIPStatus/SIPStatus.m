@@ -14,6 +14,11 @@
  */
 extern int csr_get_active_config(csr_config_t *config);
 
+//=================================================================
+//                              HELPERS                          //
+//=================================================================
+BOOL shift(BOOL a) { return !a; }
+
 @implementation SIPStatus
 
 //=================================================================
@@ -46,43 +51,64 @@ extern int csr_get_active_config(csr_config_t *config);
 {
     return (config == CSR_VALID_FLAGS);
 }
+- (BOOL)isAppleInternal
+{
+    return (config & CSR_ALLOW_APPLE_INTERNAL);
+}
 
 - (BOOL)protectsFS
 {
-    return NO;
+    return !(config & CSR_ALLOW_UNRESTRICTED_FS);
 }
 - (BOOL)allowsTFP
 {
-    return NO;
+    return (config & CSR_ALLOW_TASK_FOR_PID);
 }
 - (BOOL)allowsKernDBG
 {
-    return NO;
+    return (config & CSR_ALLOW_KERNEL_DEBUGGER);
 }
 - (BOOL)allowsDTRACE
 {
-    return NO;
+    return (config & CSR_ALLOW_UNRESTRICTED_DTRACE);
 }
 - (BOOL)allowsNVRAM
 {
-    return NO;
+    return (config & CSR_ALLOW_UNRESTRICTED_NVRAM);
 }
 - (BOOL)allowsDevConf
 {
-    return NO;
+    return (config & CSR_ALLOW_DEVICE_CONFIGURATION);
 }
 - (BOOL)allowsAnyRecovery
 {
-    return NO;
+    return (config & CSR_ALLOW_ANY_RECOVERY_OS);
 }
-- (BOOL)allowsKexts
+- (BOOL)allowsUnsignedKexts
 {
-    return NO;
+    return (config & CSR_ALLOW_UNTRUSTED_KEXTS);
+}
+- (BOOL)allowsUnapprovedKexts
+{
+    return (config & CSR_ALLOW_UNAPPROVED_KEXTS);
 }
 
-- (BOOL)isAppleInternal
+- (NSDictionary *)getReport
 {
-    return NO;
+    NSDictionary *report = @{
+                             @"Apple Internal" : [NSNumber numberWithBool:[self isAppleInternal]],
+                             
+                             @"Allows Unsigned Kexts" : [NSNumber numberWithBool:[self isAppleInternal]],
+                             @"Allows Task for PID" : [NSNumber numberWithBool:[self allowsTFP]],
+                             @"Restricts Filesystem" : [NSNumber numberWithBool:[self protectsFS]],
+                             @"Allows Debugging" : [NSNumber numberWithBool:[self allowsKernDBG]],
+                             @"Allows DTrace" : [NSNumber numberWithBool:[self allowsDTRACE]],
+                             @"Allows NVRAM" : [NSNumber numberWithBool:[self allowsNVRAM]],
+                             @"Allows Device Configuration" : [NSNumber numberWithBool:[self allowsDevConf]],
+                             @"Allows Any Recovery OS" : [NSNumber numberWithBool:[self allowsAnyRecovery]],
+                             @"Allow Unapproved Kexts" : [NSNumber numberWithBool:[self allowsUnapprovedKexts]],
+                             };
+    return report;
 }
 
 @end
