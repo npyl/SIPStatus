@@ -13,6 +13,7 @@ int main(int argc, const char * argv[]) {
 
     SIPStatus *SIP = [SIPStatus sharedInstance];
     
+    NSLog(@"%i", [SIP status]);
     NSLog(@"%@", [SIP getReport]);
     
     return 0;

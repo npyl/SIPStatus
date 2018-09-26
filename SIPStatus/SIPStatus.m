@@ -32,6 +32,7 @@ BOOL shift(BOOL a) { return !a; }
     {
         /* get SIP config */
         csr_get_active_config(&config);
+        _status = (config == CSR_VALID_FLAGS);
     }
     return self;
 }
@@ -53,7 +54,7 @@ BOOL shift(BOOL a) { return !a; }
 }
 - (BOOL)isAppleInternal
 {
-    return (config & CSR_ALLOW_APPLE_INTERNAL);
+    return shift(config & CSR_ALLOW_APPLE_INTERNAL);
 }
 
 - (BOOL)protectsFS
@@ -82,7 +83,7 @@ BOOL shift(BOOL a) { return !a; }
 }
 - (BOOL)allowsAnyRecovery
 {
-    return (config & CSR_ALLOW_ANY_RECOVERY_OS);
+    return shift(config & CSR_ALLOW_ANY_RECOVERY_OS);
 }
 - (BOOL)allowsUnsignedKexts
 {
@@ -98,7 +99,7 @@ BOOL shift(BOOL a) { return !a; }
     NSDictionary *report = @{
                              @"Apple Internal" : [NSNumber numberWithBool:[self isAppleInternal]],
                              
-                             @"Allows Unsigned Kexts" : [NSNumber numberWithBool:[self isAppleInternal]],
+                             @"Allows Unsigned Kexts" : [NSNumber numberWithBool:[self allowsUnsignedKexts]],
                              @"Allows Task for PID" : [NSNumber numberWithBool:[self allowsTFP]],
                              @"Restricts Filesystem" : [NSNumber numberWithBool:[self protectsFS]],
                              @"Allows Debugging" : [NSNumber numberWithBool:[self allowsKernDBG]],
@@ -106,7 +107,7 @@ BOOL shift(BOOL a) { return !a; }
                              @"Allows NVRAM" : [NSNumber numberWithBool:[self allowsNVRAM]],
                              @"Allows Device Configuration" : [NSNumber numberWithBool:[self allowsDevConf]],
                              @"Allows Any Recovery OS" : [NSNumber numberWithBool:[self allowsAnyRecovery]],
-                             @"Allow Unapproved Kexts" : [NSNumber numberWithBool:[self allowsUnapprovedKexts]],
+                             @"Allows Unapproved Kexts" : [NSNumber numberWithBool:[self allowsUnapprovedKexts]],
                              };
     return report;
 }
