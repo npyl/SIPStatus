@@ -54,6 +54,7 @@
 		094A5D95215BBAAE008B82EF /* SIPStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIPStatus.m; sourceTree = "<group>"; };
 		0998EAA5215BC68400A1103B /* tester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tester; sourceTree = BUILT_PRODUCTS_DIR; };
 		0998EAA7215BC68400A1103B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0998EAB0215BC91100A1103B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +108,7 @@
 		094A5D7D215BBA63008B82EF /* SIPStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0998EAB0215BC91100A1103B /* README.md */,
 				094A5D7E215BBA63008B82EF /* SIPStatus.h */,
 				094A5D95215BBAAE008B82EF /* SIPStatus.m */,
 				094A5D7F215BBA63008B82EF /* Info.plist */,
